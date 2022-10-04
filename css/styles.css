@@ -35,18 +35,20 @@ nav a{
 }
 
 nav a:hover{
-  text-decoration: underline;
+  text-decoration: wavy underline;
 }
 
 .skip a{
   background: white;
-  left: 0;
+  left: -500px;
   padding: 6px;
   -webkit-transition: top 1s ease-out;
   transition: top 1s ease-out;
   z-index: 1;
   /*Your code here - position relative to the parent */
-  /*Your code here - place 40px higher */;
+  position: relative;
+  /*Your code here - place 40px higher */
+  top: -40px;
 }
 
 .skip a:focus{
@@ -68,6 +70,10 @@ link to the exact top of the page.*/
 /*Your code here*/
 /*Add the selector and code to put a 2px black
 border around all elements in focus.*/
+nav a:focus {
+  outline: none;
+  border-top: 2px solid black;
+}
 
 footer{
   background-color: black;
@@ -84,6 +90,8 @@ nav{
   text-align: center;
   /*Your code here*/
   /*Span the top row*/
+  grid-column: 1/-1;
+  grid-row: 1/2;
 }
 
 header{
@@ -95,7 +103,10 @@ header{
   height: 400px;                /* Parallax effect */
   /* Your code here */
   /* Set background-image to header.jpg in the images folder */
+  background: #858585 url("images/header.jpg");           /*problem
   /* Span one row */
+  grid-column: 1/-1;
+  grid-row: 2/3;
 }
 
 header p{
@@ -109,36 +120,49 @@ header p{
 .container{
   /*Your code here  */
   /* See documentation for mobile view */
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  row-gap: 30px;
 }
 
 .about, .method, .clients, .contact{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-column: 2/3;
+  z-index: 1;
 }
 
 .about-image, .method-image, .clients-image, .contact-image{
    /*Your code here */
    /* See documentation for mobile view */
+   width: 100%;
+   grid-column: 1/-1;
+   max-height: 500px;
+   overflow: hidden;
 }
 
 .about, .about-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 3/4;
 }
 
 .method, .method-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 4/5;
 }
 
 .clients, .clients-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 5/6;
 }
 
 .contact, .contact-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 6/7;
 }
 
 .text-block{
@@ -149,6 +173,9 @@ header p{
   margin: auto;
   /*Your code here:*/
   /*Align the content in the center */
+  align-items: center;
+  max-height: 25vh;
+  overflow: scroll;
 }
 
 @media all and (min-width: 800px){
@@ -156,6 +183,13 @@ header p{
   .container{
     /*Your code here */
     /* See documentation for desktop view */
+    grid-template-columns: 50px auto 500px auto 50px;
+    grid-template-rows: repeat(4, 300px);
+  }
+
+  .skip a:focus {
+    left: 0;
+    top: 20px;
   }
 
   nav{
@@ -165,14 +199,16 @@ header p{
     align-self: center;
   }
 
-  .about, .clients, .method-image, .contact-image{
+  .about, .method, .clients-image, .contact-image{
     /*Your code here */
     /* See documentation for desktop view */
+    grid-column: 3/span 2;
   }
 
-  .about-image, .clients-image, .method, .contact{
+  .clients, .contact, .about-image, .method-image{
     /*Your code here */
     /* See documentation for desktop view */
+    grid-column: 2/span 2;
   }
 }  /*End the media query*/
 
