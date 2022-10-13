@@ -176,7 +176,7 @@ header p{
   margin: auto;
   /*Your code here:*/
   /*Align the content in the center */
-  align-items: center;
+  text-align: center;
   max-height: 25vh;
   overflow: scroll;
 }
